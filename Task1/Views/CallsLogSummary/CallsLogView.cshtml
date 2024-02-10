@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Task1.Models.CallsLogDetails>
+
+@{
+    ViewData["Title"] = "ViewResault";
+}
+
+<h1>CallsLogDetails</h1>
+
+<p>
+    <a asp-action="Convert">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CallDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CallDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgentID)
+            </th> 
+            <th>
+                @Html.DisplayNameFor(model => model.Answered)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CallDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CallDuration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AgentID)
+                </td>
+                @if (item.Answered == false)
+                {
+                    <td style="background-color:red;text-align:center;">
+                        @Html.DisplayFor(modelItem => item.Answered)
+                    </td>
+                }
+                else
+                {
+                    <td style="background-color:green;text-align:center;">
+                        @Html.DisplayFor(modelItem => item.Answered)
+                    </td>
+                }
+                @*   <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>*@
+            </tr>
+        }
+    </tbody>
+</table>
